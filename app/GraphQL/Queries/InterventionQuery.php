@@ -26,11 +26,17 @@ class InterventionQuery extends Query
                 'type' => Type::int(),
                 'rules' => ['required']
             ],
+            'region' => [
+                'name' => 'region',
+                'type' => Type::string()
+            ]
         ];
     }
 
     public function resolve($root, $args)
     {
+        
+
         return Intervention::findOrFail($args['id']);
     }
 }

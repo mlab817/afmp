@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\GraphQL\Mutations\UpdateUserPasswordMutation;
 use App\GraphQL\Queries\InterventionQuery;
 use App\GraphQL\Queries\InterventionsQuery;
 use App\GraphQL\Queries\UserQuery;
@@ -109,6 +110,7 @@ return [
                 'interventions' => InterventionsQuery::class
             ],
             'mutation' => [
+                'updateUserPassword' => UpdateUserPasswordMutation::class
                 // 'example_mutation'  => ExampleMutation::class,
             ],
             'middleware' => [],

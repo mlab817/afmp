@@ -18,10 +18,31 @@ class InterventionsQuery extends Query
         return Type::listOf(GraphQL::type('intervention'));
     }
 
-    
+    public function args(): array
+    {
+        return [
+            'id' => [
+                'type' => Type::int()
+            ],
+            'operatingUnit' => [
+                'type' => Type::string()
+            ],
+            'region' => [
+                'type' => Type::string()
+            ]
+        ];
+    }
 
     public function resolve($root, $args)
     {
+        if (isset($args['region'])) {
+            return Intervention::where('region', $args['region'])->get();
+        }
+
+        if (isset($args['operatingUnit'])) {
+            return Intervention::where('operatingUnit', $args['operatingUnit'])->get();
+        }
+
         return Intervention::all();
     }
 }
